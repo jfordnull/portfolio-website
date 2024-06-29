@@ -4,10 +4,11 @@ let noise = new SimplexNoise();
 let noiseSpeed = 0.0002;
 let w, h, cols, rows;
 let sliceZ = 0;
-let noiseScale = 10, fieldStrength = 100;
+let noiseScale = 20, fieldStrength = 100;
 let grid = 10;
 let particles;
-let colorRange = 180, colorBase = 120, opacity = 20;
+let colorRange = 180, colorBase = 120, opacity = 100;
+let alphaClear = 0.02;
 
 function setup(){
     reset();
@@ -19,7 +20,7 @@ function reset(){
     h = canvas.height = window.innerHeight;
     cols = Math.floor(w/grid) + 1;
     rows = Math.floor(h/grid) + 1;
-    drawBackground();
+    drawBackground(1);
     createParticles();
     createField();
 }
@@ -34,6 +35,7 @@ function createParticles() {
 }
 
 function draw(time){
+    drawBackground();
     requestAnimationFrame(draw);
     updateField();
     sliceZ = time * noiseSpeed; // time-dependent noise variation (through z-space)
@@ -85,8 +87,8 @@ function drawParticles(){
     })
 }
 
-function drawBackground(){
-    ctx.fillStyle = `rgba(0,0,0,1)`;
+function drawBackground(alpha){
+    ctx.fillStyle = `rgba(0,0,0,${alpha || alphaClear})`;
     ctx.fillRect(0,0,w,h);
 }
 
