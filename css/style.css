@@ -18,11 +18,32 @@ body {
     align-items: center;
 }
 
-#background-canvas {
+.hero {
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+}
+
+#flow-canvas {
     position: fixed;
     top: 0;
     left: 0;
     z-index: 0;
+    animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+.hero > div {
+    transform: translateY(40px);
+    animation: moveUp 1.5s forwards;
+}
+
+@keyframes moveUp {
+    0% {transform: translateY(40px);}
+    100% {transform: translateY(0px);}
 }
 
 button {
