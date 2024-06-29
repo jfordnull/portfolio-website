@@ -4,11 +4,11 @@ let noise = new SimplexNoise();
 let noiseSpeed = 0.0002;
 let w, h, cols, rows;
 let sliceZ = 0;
-let noiseScale = 20, fieldStrength = 100;
+let noiseScale = 20, fieldStrength = 60;
 let grid = 10;
 let particles;
-let colorRange = 180, colorBase = 120, opacity = 100;
-let alphaClear = 0.02;
+let colorRange = 180, colorBase = 120, opacity = 5000;
+let alphaClear = 0.04;
 
 function setup(){
     reset();
