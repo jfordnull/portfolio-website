@@ -4,11 +4,11 @@ let noise = new SimplexNoise();
 let noiseSpeed = 0.0002;
 let w, h, cols, rows;
 let sliceZ = 0;
-let noiseScale = 25, fieldStrength = 100;
+let noiseScale = 25, fieldStrength = 1;
 let grid = 10;
 let particles;
-let colorRange = 50, colorBase, opacity = 5000;
-let alphaClear = .025;
+let colorRange = 100, colorBase, opacity = 5000;
+let alphaClear = .2;
 
 function setup(){
     reset();
@@ -28,7 +28,7 @@ function reset(){
 
 function createParticles() {
     particles = [];
-    let particleCount = w * h / 1000;
+    let particleCount = w * h / 200;
     for (let i = 0; i < particleCount; i++){
         let particle = new Particle(Math.random() * w, Math.random() * h);
         particles.push(particle);
