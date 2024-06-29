@@ -1,13 +1,13 @@
 let canvas = document.querySelector("#flow-canvas");
 let ctx = canvas.getContext("2d");
-let noise;
+let noise = new SimplexNoise();
 let noiseSpeed = 0.0002;
 let w, h, cols, rows;
 let sliceZ = 0;
-let noiseScale, fieldStrength;
+let noiseScale = 10, fieldStrength = 100;
 let grid = 10;
-let particles = [];
-let colorRange, colorBase, opacity;
+let particles;
+let colorRange = 180, colorBase = 120, opacity = 20;
 
 function setup(){
     reset();
@@ -15,19 +15,20 @@ function setup(){
 }
 
 function reset(){
-    noise = new SimplexNoise();
     w = canvas.width = window.innerWidth;
     h = canvas.height = window.innerHeight;
     cols = Math.floor(w/grid) + 1;
     rows = Math.floor(h/grid) + 1;
+    drawBackground();
     createParticles();
     createField();
 }
 
 function createParticles() {
+    particles = [];
     let particleCount = w * h / 1000;
     for (let i = 0; i < particleCount; i++){
-        let particle = new Particle(Math.random() * w, Math.random() * height);
+        let particle = new Particle(Math.random() * w, Math.random() * h);
         particles.push(particle);
     }
 }
@@ -36,13 +37,13 @@ function draw(time){
     requestAnimationFrame(draw);
     updateField();
     sliceZ = time * noiseSpeed; // time-dependent noise variation (through z-space)
-    drawParticles
+    drawParticles();
 }
 
 function createField(){
     field = new Array(cols);
     for (let i = 0; i < cols; i++){
-        field[i] = new Array(rows);
+        field[i] = new Array(cols);
         for (let j = 0; j < rows; j++){
             field[i][j] = new Vector(0,0);
         }
@@ -53,19 +54,41 @@ function updateField(){
     for (let i = 0; i < cols; i++){
         for (let j = 0; j < rows; j++){
             // Multiply by 2PI for full circular range of angles:
-            let angle = noise.noise3D(i / noiseScale / 5, j / noiseScale / 5, sliceZ) * Math.PI * 2;
+            let angle = noise.noise3D(i / noiseScale / 5, j / noiseScale / 5 , sliceZ) * Math.PI * 2;
             // Divide to scale coordinates, add 50000 to shift noise pattern (prevent overlap with angle noise):
             let length = noise.noise3D(i / 50 + 50000, j / 50 + 50000, sliceZ) * fieldStrength / 20;
-            field[i][j].setLength(length);
-            field[i][j].setAngle(angle);
+            let v = new Vector(0, length);
+            v.setAngle(angle);
+            field[i][j] = v;
         }
     }
 }
 
 function drawParticles(){
-    let pos = new Vector(0,0);
     // Map sine wave to color range:
     let hue = Math.sin(sliceZ) * colorRange + colorBase;
     // (hsla: hue, saturation, lightness, alpha)
-    let color = 'hsla(${hue}, 100%, 50%, ${opacity/500})';
+    let color = `hsla(${hue}, 100%, 50%, ${opacity/500})`;
+    ctx.fillStyle = color;
+    ctx.strokeStyle = color;
+    particles.forEach(p => {
+        p.drawLine();
+        let pos = new Vector(0,0);
+        pos.x = p.pos.x / grid;
+        pos.y = p.pos.y / grid;
+        let v;
+        if (pos.x >= 0 && pos.x < cols && pos.y >= 0 && pos.y < rows){
+            v = field[Math.floor(pos.x)][Math.floor(pos.y)];
+        }
+        p.move(v)
+        p.wrap(w,h);
+    })
 }
+
+function drawBackground(){
+    ctx.fillStyle = `rgba(0,0,0,1)`;
+    ctx.fillRect(0,0,w,h);
+}
+
+setup();
+draw(performance.now());

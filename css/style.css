@@ -4,14 +4,25 @@ body {
     font-size: 16pt;
     font-family: Merriweather, Arial, Helvetica, sans-serif;
     color:white;
+    background-color: black;
+    overflow: hidden;
 }
 
-.hero {
-    background-color: black;
-    display: flex;
+.container {
     height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: 1;
+    display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#background-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
 }
 
 button {
@@ -33,5 +44,5 @@ button {
 }
 
 button:hover {
-    border-color: rgba(255,255,255,0.55);
+    border-color: rgba(255,255,255,1);
 }
