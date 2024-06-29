@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+body {
+    font-size: 16pt;
+    font-family: Merriweather, Arial, Helvetica, sans-serif;
+    color:white;
+}
+
+.hero {
+    background-color: black;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    appearance: none;
+    background-color: transparent;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 3em;
+    color:white;
+    text-transform: lowercase;
+    display:inline-block;
+    font-size: 0.6em;
+    font-weight: bold;
+    font-family: inherit;
+    height: 3em;
+    line-height: 3em;
+    padding: 0 2em;
+}
+
