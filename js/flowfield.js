@@ -4,11 +4,11 @@ let noise = new SimplexNoise();
 let noiseSpeed = 0.0002;
 let w, h, cols, rows;
 let sliceZ = 0;
-let noiseScale = 20, fieldStrength = 60;
+let noiseScale = 25, fieldStrength = 100;
 let grid = 10;
 let particles;
-let colorRange = 180, colorBase = 120, opacity = 5000;
-let alphaClear = 0.04;
+let colorRange = 50, colorBase, opacity = 5000;
+let alphaClear = .025;
 
 function setup(){
     reset();
@@ -16,6 +16,7 @@ function setup(){
 }
 
 function reset(){
+    colorBase = Math.random() * 360;
     w = canvas.width = window.innerWidth;
     h = canvas.height = window.innerHeight;
     cols = Math.floor(w/grid) + 1;
