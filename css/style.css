@@ -180,40 +180,6 @@ button:hover {
     font-size: 18pt;
 }
 
-@media screen and (max-width: 1680px) {
-
-    .about-me-container {
-        gap: 2em;
-    }
-
-    .button-container {
-        font-size: 16pt;
-        flex-wrap: wrap;
-    }
-
-}
-
-@media screen and (max-width: 650px) {
-
-    .about-me-container {
-        flex-direction: column;
-    }
-
-    .about-me-container > .info {
-        width: 100%;
-    }
-
-}
-
-@media screen and (max-height: 400px) {
-    .about-me-container > * {
-        font-size: 10pt;
-    }
-    .button-container {
-        font-size: 13pt;
-    }
-}
-
 .fade-in {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
@@ -276,7 +242,36 @@ button:hover {
     100% {transform: translateY(0px);}
 }
 
+@media screen and (max-width: 1680px) {
+
+    .about-me-container {
+        gap: 2em;
+    }
+
+    .button-container,
+    .download-btn-cont,
+    .resume-btn-cont {
+        font-size: 16pt;
+        flex-wrap: wrap;
+    }
+
+    .resume-btn-cont > * > *,
+    .download-btn-cont > * > * {
+        font-size: 0.6rem;
+    }
+
+}
+
 @media screen and (max-width: 650px) {
+
+    .about-me-container {
+        flex-direction: column;
+    }
+
+    .about-me-container > .info {
+        width: 100%;
+    }
+
     .bio-container {
         font-size: 9.75pt;
         gap: 1em;
@@ -284,6 +279,17 @@ button:hover {
 }
 
 @media screen and (max-height: 400px) {
+    
+    .about-me-container > * {
+        font-size: 10pt;
+    }
+    
+    .button-container,
+    .download-btn-cont,
+    .resume-btn-cont {
+        font-size: 13pt;
+    }
+
     .bio-container {
         font-size: 9.5pt;
         gap: 1em;
