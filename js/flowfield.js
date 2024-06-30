@@ -12,7 +12,7 @@ let alphaClear = .2;
 
 function setup(){
     reset();
-    window.addEventListener("resize", reset);
+    window.addEventListener("resize", debounce(reset, 100));
 }
 
 function reset(){
@@ -91,6 +91,14 @@ function drawParticles(){
 function drawBackground(alpha){
     ctx.fillStyle = `rgba(0,0,0,${alpha || alphaClear})`;
     ctx.fillRect(0,0,w,h);
+}
+
+function debounce(func, wait) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+    };
 }
 
 setup();
