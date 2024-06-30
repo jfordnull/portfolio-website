@@ -276,16 +276,16 @@ button:hover {
     100% {transform: translateY(0px);}
 }
 
-@media screen and (max-height: 400px) {
+@media screen and (max-width: 650px) {
     .bio-container {
-        font-size: 9.5pt;
+        font-size: 9.75pt;
         gap: 1em;
     }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-height: 400px) {
     .bio-container {
-        font-size: 9.25pt;
+        font-size: 9.5pt;
         gap: 1em;
     }
 }
