@@ -42,17 +42,24 @@
         </div>
     </section>
     <section id="projects" class="wrapper">
-        <h2>Projects</h2>
+        <div class="project-container fade-in">
+            <h2>Projects</h2>
+            <p>(Coming soon!)</p>
+            <a href="#resume" class="smooth-scroll resume-button"><button>my resume</button></a>
+        </div>
     </section>
-    <section class="wrapper">
-        <h2>Contact</h2>
+    <section id="resume" class="wrapper">
+        <div class="resume-container fade-in">
+            <h2>Contact</h2>
+            <a href="./pages/JF_Resume.pdf" download target="_blank" rel="noopener noreferrer">Download Resume</a>
+        </div>
     </section>
     <script src="./js/vector.js"></script>
     <script src="./js/simplex-noise.js"></script>
     <script src="./js/particle.js"></script>
     <script src="./js/flowfield.js"></script>
 
-    <!-- Javascript scroll: -->
+    <!-- Smooth scrolling: -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             let scrollLinks = document.querySelectorAll('.smooth-scroll');
@@ -76,10 +83,10 @@
         });
     </script>
 
-    <!-- Javascript fade-in elements within viewport: -->
+    <!-- Fade-in elements intersecting viewport: -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var fadeElements = document.querySelectorAll('.fade-in');
+            let fadeElements = document.querySelectorAll('.fade-in');
 
             function checkFadeElements() {
                 fadeElements.forEach(function(element) {
@@ -93,9 +100,10 @@
             }
 
             function isElementInViewport(el) {
-                var rect = el.getBoundingClientRect();
-                var windowHeight = window.innerHeight || document.documentElement.clientHeight;
-                var threshold = 0;
+                let rect = el.getBoundingClientRect();
+                let windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                // Increased threshold -> more element-viewport intersection before visibility 
+                let threshold = 0;
                 return (
                     rect.top <= windowHeight - threshold &&
                     rect.bottom >= threshold

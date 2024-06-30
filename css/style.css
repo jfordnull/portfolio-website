@@ -13,6 +13,11 @@ ul {
     flex-wrap: wrap;
 }
 
+a {
+    text-decoration: none;
+    color: hotpink;
+}
+
 body {
     font-size: 16pt;
     font-family: Merriweather, Arial, Helvetica, sans-serif;
@@ -171,6 +176,19 @@ button:hover {
     gap: 1em;
 }
 
+.project-container,
+.resume-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    justify-content: center;
+    text-align: center;
+}
+
+.resume-button {
+    font-size: 18pt;
+}
+
 @media screen and (max-width: 1680px) {
 
     .about-me-container {
@@ -201,7 +219,7 @@ button:hover {
         font-size: 10pt;
     }
     .button-container {
-        font-size: 11pt;
+        font-size: 13pt;
     }
 }
 
