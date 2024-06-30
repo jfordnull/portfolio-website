@@ -282,3 +282,10 @@ button:hover {
         gap: 1em;
     }
 }
+
+@media screen and (max-width: 650px) {
+    .bio-container {
+        font-size: 9.25pt;
+        gap: 1em;
+    }
+}
