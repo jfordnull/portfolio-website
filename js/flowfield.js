@@ -12,7 +12,7 @@ let alphaClear = .2;
 
 function setup(){
     reset();
-    window.addEventListener("resize", debounce(reset, 100));
+    window.addEventListener("resize", checkResize);
 }
 
 function reset(){
@@ -93,12 +93,15 @@ function drawBackground(alpha){
     ctx.fillRect(0,0,w,h);
 }
 
-function debounce(func, wait) {
-    let timeout;
-    return function(...args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, args), wait);
-    };
+function checkResize() {
+    const currentWidth = window.innerWidth;
+    const currentHeight = window.innerHeight;
+
+    if (currentWidth !== previousWidth || currentHeight !== previousHeight) {
+        previousWidth = currentWidth;
+        previousHeight = currentHeight;
+        reset();
+    }
 }
 
 setup();
