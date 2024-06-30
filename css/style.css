@@ -185,7 +185,8 @@ button:hover {
     text-align: center;
 }
 
-.resume-button {
+.resume-button,
+.top-button {
     font-size: 18pt;
 }
 
