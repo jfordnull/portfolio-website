@@ -10,6 +10,9 @@ let particles;
 let colorRange = 100, colorBase, opacity = 5000;
 let alphaClear = .2;
 
+let previousWidth = window.innerWidth;
+let previousHeight = window.innerHeight;
+
 function setup(){
     reset();
     window.addEventListener("resize", checkResize);
