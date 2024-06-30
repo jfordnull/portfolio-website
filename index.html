@@ -12,7 +12,7 @@
             <div class="hero">
                 <div>
                     <h1>jacobford.dev</h1>
-                    <a href="#about"><button>About Jacob</button></a>
+                    <a href="#about" class="smooth-scroll"><button>About Jacob</button></a>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
             <img src="./img/headshot.png" alt="A handsome picture of Jacob" class="headshot">
             <div class="info">
                 <h2>//Hello World!</h2>
-                <p>My name is Jacob and I'm a CS student at the University of Missouri Kansas-City. I do work in Computer Graphics and Game Development.</p>
+                <p class="left">My name is Jacob and I'm a CS student at the University of Missouri Kansas-City. I do work in Computer Graphics and Game Development.</p>
                 <!-- <p>I've taken courses in Linear Algebra, Calculus, Operating Systems, Networking, Data Structures, Algorithms, Probability and Statistics.</p> -->
                 <p>My favorite programming language is C, but I'm also comfortable with:</p>
                 <ul>
@@ -36,7 +36,7 @@
                 </ul>
                 <div class="button-container">
                     <a href="#about"><button>more bio</button></a>
-                    <a href="#projects"><button>my work</button></a>
+                    <a href="#projects" class="smooth-scroll"><button>my work</button></a>
                 </div>
             </div>
         </div>
@@ -51,5 +51,29 @@
     <script src="./js/simplex-noise.js"></script>
     <script src="./js/particle.js"></script>
     <script src="./js/flowfield.js"></script>
+
+    <!-- Javascript scroll function: -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let smoothScrollLinks = document.querySelectorAll('.smooth-scroll');
+
+            smoothScrollLinks.forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    let targetId = this.getAttribute('href');
+                    let targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        let offsetTop = targetElement.offsetTop;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth' 
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
