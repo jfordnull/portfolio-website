@@ -7,15 +7,45 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="hero">
-            <div>
-                <h1>jacobford.dev</h1>
-                <button>About Jacob</button>
+    <div class="wrapper landing-page">
+        <div class="container">
+            <div class="hero">
+                <div>
+                    <h1>jacobford.dev</h1>
+                    <a href="#about"><button>About Jacob</button></a>
+                </div>
             </div>
         </div>
+        <canvas id="flow-canvas"></canvas>
     </div>
-    <canvas id="flow-canvas"></canvas>
+    <section id="about" class="wrapper about-me">
+        <div class="about-me-container">
+            <img src="./img/headshot.png" alt="A handsome picture of Jacob" class="headshot">
+            <div class="info">
+                <h2>//Hello World!</h2>
+                <p>My name is Jacob and I'm a computer science student at the University of Missouri Kansas-City. I do work in Computer Graphics and Game Development.</p>
+                <p>I've taken courses in Linear Algebra, Calculus, Operating Systems, Networking, Data Structures, Algorithms, Probability and Statistics.</p>
+                <p>My favorite programming language is C, but I'm also comfortable with:</p>
+                <ul>
+                    <li>C#</li>
+                    <li>C++</li>
+                    <li>Java</li>
+                    <li>Python</li>
+                    <li>Javascript</li>
+                    <li>HTML + CSS</li>
+                </ul>
+                <div class="button-container">
+                    <a href="#about"><button>more Jacob</button></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="wrapper">
+        <h2>Projects</h2>
+    </section>
+    <section class="wrapper">
+        <h2>Contact</h2>
+    </section>
     <script src="./js/vector.js"></script>
     <script src="./js/simplex-noise.js"></script>
     <script src="./js/particle.js"></script>
