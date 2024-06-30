@@ -184,7 +184,7 @@ button:hover {
 
 }
 
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 650px) {
 
     .about-me-container {
         flex-direction: column;
@@ -194,6 +194,15 @@ button:hover {
         width: 100%;
     }
 
+}
+
+@media screen and (max-height: 400px) {
+    .about-me-container > * {
+        font-size: 10pt;
+    }
+    .button-container {
+        font-size: 11pt;
+    }
 }
 
 .fade-in {
