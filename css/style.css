@@ -209,6 +209,7 @@ button:hover {
     flex-direction: column;
     gap: 2em;
     margin: 2em 2em;
+    overflow: hidden;
 }
 
 .button-on-white {
@@ -230,6 +231,15 @@ button:hover {
     opacity: 0;
     animation: fadeIn 2s forwards;
     animation-delay: 1s;
+}
+
+.bio-page::after{
+    content: '';
+    position: absolute;
+    bottom: 0vh;
+    width: 100%;
+    height: 10vh;
+    background: linear-gradient(to bottom, transparent,white);
 }
 
 @keyframes fadeIn {
@@ -257,7 +267,7 @@ button:hover {
 
     .resume-btn-cont > * > *,
     .download-btn-cont > * > * {
-        font-size: 0.6rem;
+        font-size: 0.8rem;
     }
 
 }
@@ -273,7 +283,7 @@ button:hover {
     }
 
     .bio-container {
-        font-size: 9.75pt;
+        font-size: 10pt;
         gap: 1em;
     }
 }
@@ -292,6 +302,15 @@ button:hover {
 
     .bio-container {
         font-size: 9.5pt;
+        gap: .5em;
+    }
+
+    .bio {
+        gap: .5em;
+    }
+
+    .reset-container {
+        display: flex;
         gap: 1em;
     }
 }
