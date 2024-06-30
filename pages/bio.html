@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="wrapper bio-page">
+        <div class="bio-container">
+            <div class="reset-container">
+                <h2>This page will gradually fill with procedural noise</h1>
+                <button id="resetBtn" class="button-on-white">reset it</button>
+            </div>
+            <div class="bio">
+                <h1>Hi! I'm Jacob</h1>
+                <p>I'm a senior in Computer Science at the University of Missouri Kansas-City with a minor in Mathematics.</p>
+                <p>I've taken courses in Linear Algebra, Calculus, Operating Systems, Networking, Data Structures, Algorithms, Probability and Statistics, etc.</p>
+                <p>I have a decade of experience in Unity writing 2D, 3D, and AR/VR applications.</p>
+                <p>I've written a parser, a 3D rasterizer from scratch, and a fibonacci heap that optimized Dijkstra's and Prim's algorithms across large networks. 
+                    I also have experience with Git, Linux, and embedded development for Arduino.
+                </p>
+                <p>And I programmed this <a href="https://github.com/jfordnull/portfolio-website" target="_blank" rel="noopener noreferrer">website</a>! No templates, libraries, frameworks. Just HTML, CSS, and Javacript.</p>
+                <div>
+                    <a href="../index.html" target="_self" rel="noopener noreferrer"><button class="button-on-white">take me home</button></a>
+                </div>
+            </div>
+        </div>
+        <canvas id="flow-canvas"></canvas>
+    </div>
+    <script src="../js/vector.js"></script>
+    <script src="../js/simplex-noise.js"></script>
+    <script src="../js/particle.js"></script>
+    <script src="../js/flowfield.js"></script>
+    <!-- Modify flowfield parameters for bio, add event listener to reset: -->
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            setParameters(0.001, 5, 4000);
+            document.getElementById('resetBtn').addEventListener('click', () => {
+                reset();
+            })
+        });
+    </script>
+</body>
+</html>

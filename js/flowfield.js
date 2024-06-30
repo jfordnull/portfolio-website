@@ -7,8 +7,9 @@ let sliceZ = 0;
 let noiseScale = 25, fieldStrength = 1;
 let grid = 10;
 let particles;
-let colorRange = 100, colorBase, opacity = 5000;
+let colorRange = 100, colorBase, opacity = 500;
 let alphaClear = .2;
+let monochromatic = false;
 
 let previousWidth = window.innerWidth;
 let previousHeight = window.innerHeight;
@@ -72,12 +73,18 @@ function updateField(){
 }
 
 function drawParticles(){
-    // Map sine wave to color range:
-    let hue = Math.sin(sliceZ) * colorRange + colorBase;
-    // (hsla: hue, saturation, lightness, alpha)
-    let color = `hsla(${hue}, 100%, 50%, ${opacity/500})`;
-    ctx.fillStyle = color;
-    ctx.strokeStyle = color;
+    if (!monochromatic){
+        // Map sine wave to color range:
+        let hue = Math.sin(sliceZ) * colorRange + colorBase;
+        // (hsla: hue, saturation, lightness, alpha)
+        let color = `hsla(${hue}, 100%, 50%, ${opacity/500})`;
+        ctx.fillStyle = color;
+        ctx.strokeStyle = color;
+    }
+    else {
+        ctx.strokeStyle = `rgba(0,0,0,${opacity/500})`;
+        ctx.fillStyle = `rgba(0,0,0,${opacity/500})`;
+    }
     particles.forEach(p => {
         p.drawLine();
         let pos = new Vector(0,0);
@@ -93,7 +100,12 @@ function drawParticles(){
 }
 
 function drawBackground(alpha){
-    ctx.fillStyle = `rgba(0,0,0,${alpha || alphaClear})`;
+    if (!monochromatic){
+        ctx.fillStyle = `rgba(0,0,0,${alpha || alphaClear})`;
+    }
+    else{
+        ctx.fillStyle = `rgba(255,255,255,${alpha || alphaClear})`;
+    }
     ctx.fillRect(0,0,w,h);
 }
 
@@ -109,6 +121,14 @@ function checkResize() {
         previousHeight = currentHeight;
         reset();
     }
+}
+
+function setParameters(alphaClear_v, opacity_v, particles_div){
+    alphaClear = alphaClear_v;
+    opacity = opacity_v;
+    particles = w*h/particles_div;
+    monochromatic = true;
+    reset();
 }
 
 setup();
