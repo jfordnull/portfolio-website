@@ -20,8 +20,8 @@
     </div>
     <section id="about" class="wrapper about-me">
         <div class="about-me-container">
-            <img src="./img/headshot.png" alt="A handsome picture of Jacob" class="headshot">
-            <div class="info">
+            <img src="./img/headshot.png" alt="A handsome picture of Jacob" class="headshot fade-in">
+            <div class="info fade-in">
                 <h2>//Hello World!</h2>
                 <p class="left">My name is Jacob and I'm a CS student at the University of Missouri Kansas-City. I do work in Computer Graphics and Game Development.</p>
                 <!-- <p>I've taken courses in Linear Algebra, Calculus, Operating Systems, Networking, Data Structures, Algorithms, Probability and Statistics.</p> -->
@@ -52,12 +52,12 @@
     <script src="./js/particle.js"></script>
     <script src="./js/flowfield.js"></script>
 
-    <!-- Javascript scroll function: -->
+    <!-- Javascript scroll: -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            let smoothScrollLinks = document.querySelectorAll('.smooth-scroll');
+            let scrollLinks = document.querySelectorAll('.smooth-scroll');
 
-            smoothScrollLinks.forEach(function(link) {
+            scrollLinks.forEach(function(link) {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
 
@@ -73,6 +73,38 @@
                     }
                 });
             });
+        });
+    </script>
+
+    <!-- Javascript fade-in elements within viewport: -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var fadeElements = document.querySelectorAll('.fade-in');
+
+            function checkFadeElements() {
+                fadeElements.forEach(function(element) {
+                    if (isElementInViewport(element)) {
+                        element.classList.add('visible');
+                    }
+                    else{
+                        element.classList.remove('visible');
+                    }
+                });
+            }
+
+            function isElementInViewport(el) {
+                var rect = el.getBoundingClientRect();
+                var windowHeight = window.innerHeight || document.documentElement.clientHeight;
+                var threshold = 0;
+                return (
+                    rect.top <= windowHeight - threshold &&
+                    rect.bottom >= threshold
+                );
+            }
+
+            checkFadeElements();
+            window.addEventListener('scroll', checkFadeElements);
+            window.addEventListener('resize', checkFadeElements);
         });
     </script>
 </body>
