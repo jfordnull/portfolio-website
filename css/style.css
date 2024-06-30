@@ -95,19 +95,9 @@ body {
     animation: fadeIn 2s forwards;
 }
 
-@keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
-}
-
 .hero > div {
     transform: translateY(40px);
     animation: moveUp 1.5s forwards;
-}
-
-@keyframes moveUp {
-    0% {transform: translateY(40px);}
-    100% {transform: translateY(0px);}
 }
 
 button {
@@ -238,6 +228,15 @@ button:hover {
     color: black;
 }
 
+.reset-container {
+    opacity:0;
+    animation: fadeIn 2s forwards;
+}
+
+/* .reset-container > * {
+    animation: moveUp 2s forwards;
+} */
+
 .bio-container {
     z-index: 1;
     display: flex;
@@ -262,4 +261,24 @@ button:hover {
     flex-direction: column;
     gap: 1em;
     max-width: 82ch;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@keyframes moveUp {
+    0% {transform: translateY(40px);}
+    100% {transform: translateY(0px);}
+}
+
+@media screen and (max-height: 400px) {
+    .bio-container {
+        font-size: 9.5pt;
+        gap: 1em;
+    }
 }
