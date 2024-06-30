@@ -12,6 +12,7 @@ let alphaClear = .2;
 
 let previousWidth = window.innerWidth;
 let previousHeight = window.innerHeight;
+const resizeThreshold = 100;
 
 function setup(){
     reset();
@@ -100,7 +101,10 @@ function checkResize() {
     const currentWidth = window.innerWidth;
     const currentHeight = window.innerHeight;
 
-    if (currentWidth !== previousWidth || currentHeight !== previousHeight) {
+    const widthChange = Math.abs(currentWidth - previousWidth);
+    const heightChange = Math.abs(currentHeight - previousHeight);
+
+    if (widthChange > resizeThreshold || heightChange > resizeThreshold) {
         previousWidth = currentWidth;
         previousHeight = currentHeight;
         reset();
