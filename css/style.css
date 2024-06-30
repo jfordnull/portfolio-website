@@ -21,6 +21,38 @@ body {
     overflow-x: hidden;
 }
 
+@media screen and (max-width: 1680px) {
+
+    body {
+        font-size: 13pt;
+    }
+
+}
+
+@media screen and (max-width: 1280px) {
+
+    body {
+        font-size: 12pt;
+    }
+
+}
+
+@media screen and (max-width: 736px) {
+
+    body {
+        font-size: 11pt;
+    }
+
+}
+
+@media screen and (max-width: 360px) {
+
+    body {
+        font-size: 10pt;
+    }
+
+}
+
 .wrapper {
     height: 100vh;
     display: flex;
@@ -95,9 +127,15 @@ button:hover {
     border-color: rgba(255,255,255,1);
 }
 
-.about-me {
-    background: linear-gradient(to bottom, black, transparent 10%, transparent);
-    background-color: black;
+.about-me::before {
+    content: '';
+    position: absolute;
+    top: 90vh;
+    left: 0;
+    width: 100%;
+    height: 10vh;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), black);
+    z-index: 2;
 }
 
 .about-me-container {
@@ -114,10 +152,23 @@ button:hover {
 }
 
 .about-me-container > .info {
+    text-align: center;
     display: flex;
     flex-direction: column;
     gap: 1em;
     justify-content: center;
+}
+
+@media screen and (max-width: 736px) {
+
+    .about-me-container {
+        flex-direction: column;
+    }
+
+    .about-me-container > .info {
+        width: 100%;
+    }
+
 }
 
 .headshot {
